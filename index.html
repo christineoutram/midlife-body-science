@@ -21,16 +21,6 @@
 
   <meta name="theme-color" content="#FBF9F3">
 
-  <!--
-    ANALYTICS
-    Recommended: add Google Tag Manager here once you have a container ID.
-    Then track:
-      - page_view
-      - survey_click
-    The survey button below already pushes a "survey_click" event to dataLayer
-    so it will begin working as soon as GTM is installed.
-  -->
-
   <script>
     window.dataLayer = window.dataLayer || [];
   </script>
@@ -102,15 +92,33 @@
       white-space: nowrap;
     }
 
-    .nav-note {
-      font-size: 0.86rem;
-      color: rgba(29,43,69,.68);
-      letter-spacing: 0.02em;
-      text-align: right;
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 16px;
+      background: var(--ink);
+      color: white;
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      white-space: nowrap;
+      transition: background .16s ease, transform .16s ease;
+    }
+
+    .nav-cta:hover,
+    .nav-cta:focus-visible {
+      background: var(--deep-ink);
+      transform: translateY(-1px);
+      outline: none;
     }
 
     main {
-      padding: 86px 0 54px;
+      padding: 58px 0 48px;
     }
 
     .eyebrow {
@@ -124,13 +132,28 @@
 
     h1 {
       margin: 0;
-      max-width: 970px;
+      max-width: 1080px;
       color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3.4rem, 8vw, 7.9rem);
-      line-height: .94;
+      font-size: clamp(3.25rem, 6.1vw, 6.65rem);
+      line-height: .96;
       font-weight: 500;
       letter-spacing: -0.045em;
+    }
+
+    .hero-line {
+      display: block;
+    }
+
+    @media (min-width: 1000px) {
+      .hero-title {
+        max-width: none;
+        font-size: clamp(3rem, 5.25vw, 5.85rem);
+      }
+
+      .hero-title .hero-line:first-child {
+        white-space: nowrap;
+      }
     }
 
     .highlight {
@@ -157,8 +180,20 @@
       display: grid;
       grid-template-columns: 1.05fr .95fr;
       gap: 72px;
-      margin-top: 74px;
+      margin-top: 46px;
       align-items: start;
+    }
+
+    .hero-grid {
+      align-items: center;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 170px;
     }
 
     .statement {
@@ -173,13 +208,6 @@
       color: var(--ink);
       font-weight: 600;
     }
-
-    .intro {
-      font-size: 1.08rem;
-      max-width: 560px;
-    }
-
-    .intro p:first-child { margin-top: 0; }
 
     .rule {
       border: 0;
@@ -221,6 +249,31 @@
       font-size: .9rem;
       color: rgba(29,43,69,.72);
     }
+
+    .explainer-section {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 72px;
+      padding: 82px 0;
+      border-bottom: 1px solid var(--stone);
+      align-items: start;
+    }
+
+    .explainer-kicker {
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding-top: 6px;
+    }
+
+    .explainer-copy {
+      max-width: 760px;
+      font-size: 1.18rem;
+    }
+
+    .explainer-copy p:first-child { margin-top: 0; }
 
     .cta-section {
       padding: 92px 0 96px;
@@ -273,6 +326,12 @@
       outline: none;
     }
 
+    .hero-button {
+      margin-top: 0;
+      min-height: 58px;
+      padding: 0 28px;
+    }
+
     .fine-print {
       margin-top: 12px;
       color: rgba(29,43,69,.64);
@@ -312,26 +371,64 @@
     }
 
     @media (max-width: 820px) {
-      header { padding-top: 22px; }
-      .nav-note { display: none; }
-      main { padding-top: 58px; }
-      h1 { font-size: clamp(3.2rem, 15vw, 5.8rem); }
+      header { padding-top: 20px; }
+
+      .nav-cta {
+        min-height: 36px;
+        padding: 0 10px;
+        font-size: .68rem;
+      }
+
+      main { padding-top: 42px; }
+
+      h1 {
+        font-size: clamp(3rem, 11.5vw, 5rem);
+        line-height: .98;
+      }
+
+      .hero-line {
+        display: inline;
+      }
+
+      .hero-line + .hero-line::before {
+        content: " ";
+      }
+
+      .hero-title .hero-line:first-child {
+        white-space: normal;
+      }
+
       .lede-grid,
-      .cta-section {
+      .cta-section,
+      .explainer-section {
         grid-template-columns: 1fr;
         gap: 38px;
       }
+
       .lede-grid { margin-top: 54px; }
+
       .pillars { grid-template-columns: 1fr 1fr; }
+
       .pillar:nth-child(2) { border-right: 0; }
       .pillar:nth-child(-n+2) { border-bottom: 1px solid var(--stone); }
+
       .cta-section { padding: 70px 0; }
-      .coming { align-items: flex-start; flex-direction: column; }
+
+      .coming {
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 520px) {
-      .wrap { width: min(calc(100% - 28px), var(--max)); }
-      .pillars { grid-template-columns: 1fr; }
+      .wrap {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
       .pillar,
       .pillar:not(:first-child) {
         padding: 19px 0;
@@ -339,9 +436,58 @@
         border-bottom: 1px solid var(--stone);
         min-height: auto;
       }
-      .pillar:last-child { border-bottom: 0; }
-      .button { width: 100%; }
-      .highlight { white-space: normal; }
+
+      .pillar:last-child {
+        border-bottom: 0;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .highlight {
+        white-space: normal;
+      }
+
+      main {
+        padding-top: 34px;
+      }
+
+      h1 {
+        font-size: clamp(2.65rem, 13vw, 4rem);
+        line-height: 1;
+        letter-spacing: -0.035em;
+      }
+
+      .lede-grid {
+        margin-top: 36px;
+      }
+
+      .hero-cta {
+        min-height: auto;
+      }
+    }
+
+    @media (min-width: 821px) and (max-height: 850px) {
+      main {
+        padding-top: 42px;
+      }
+
+      h1 {
+        font-size: clamp(3.1rem, 5.4vw, 5.8rem);
+      }
+
+      .lede-grid {
+        margin-top: 34px;
+      }
+
+      .hero-cta {
+        min-height: 145px;
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -352,75 +498,139 @@
 </head>
 
 <body>
+
   <header>
     <div class="wrap nav">
-      <a class="wordmark" href="/" aria-label="Midlife Body Science home">Midlife Body Science</a>
-      <div class="nav-note">Evidence-based. Whole-person. Built for women.</div>
+      <a class="wordmark" href="/" aria-label="Midlife Body Science home">
+        Midlife Body Science
+      </a>
+
+      <a
+        class="nav-cta"
+        href="https://form.jotform.com/262578076138062?utm_source=midlifebodyscience&amp;utm_medium=website&amp;utm_campaign=launch&amp;utm_content=nav_cta"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="window.dataLayer.push({event:'survey_click',link_location:'homepage_nav_cta'});"
+      >
+        Take the survey →
+      </a>
     </div>
   </header>
 
   <main>
     <div class="wrap">
+
       <div class="eyebrow">Women's health, connected</div>
 
-      <h1>
-        The science of the<br>
-        whole woman,<br>
-        <span class="highlight">in midlife.</span>
+      <h1 class="hero-title">
+        <span class="hero-line">The science of the whole woman,</span>
+        <span class="hero-line">
+          <span class="highlight">in midlife.</span>
+        </span>
       </h1>
 
-      <section class="lede-grid" aria-label="Introduction">
+      <section class="lede-grid hero-grid" aria-label="Introduction">
+
         <p class="statement">
           Your hormones don't exist separately from your brain.
           Your pelvic floor doesn't exist separately from your nervous system.
           Your sleep doesn't exist separately from your stress.
           And your body doesn't exist separately from your life.
           <br><br>
-          <strong>Neither should the way we understand women's health.</strong>
+          <strong>
+            Neither should the way we understand women's health.
+          </strong>
         </p>
 
-        <div class="intro">
-          <p>
-            <strong>Midlife Body Science</strong> explores evidence-based women's health through a whole-person lens — connecting hormones, brain and nervous system, pelvic health, sleep, strength, pain, psychology, behavior, relationships and healthy aging.
-          </p>
-          <p>
-            We are interested in what changes in midlife, what actually helps, what is still poorly understood — and how the pieces connect.
-          </p>
+        <div class="hero-cta">
+          <a
+            class="button hero-button"
+            href="https://form.jotform.com/262578076138062?utm_source=midlifebodyscience&amp;utm_medium=website&amp;utm_campaign=launch&amp;utm_content=hero_cta"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="window.dataLayer.push({event:'survey_click',link_location:'homepage_hero_cta'});"
+          >
+            Take the 5-minute survey →
+          </a>
+
+          <div class="fine-print">
+            Help shape what we build. No sales pitch.
+          </div>
         </div>
+
       </section>
 
       <hr class="rule">
 
       <section class="pillars" aria-label="Whole-person framework">
+
         <div class="pillar">
           <div class="num">01 — BODY</div>
           <div class="pillar-title">Physical systems</div>
-          <div class="pillar-copy">Hormones, pelvic health, strength, pain, sleep and healthy aging.</div>
+          <div class="pillar-copy">
+            Hormones, pelvic health, strength, pain, sleep and healthy aging.
+          </div>
         </div>
+
         <div class="pillar">
           <div class="num">02 — BRAIN</div>
           <div class="pillar-title">Nervous system</div>
-          <div class="pillar-copy">Brain, stress physiology, mood, cognition and autonomic regulation.</div>
+          <div class="pillar-copy">
+            Brain, stress physiology, mood, cognition and autonomic regulation.
+          </div>
         </div>
+
         <div class="pillar">
           <div class="num">03 — BEHAVIOR</div>
           <div class="pillar-title">What we actually do</div>
-          <div class="pillar-copy">Habits, movement, recovery, decision-making and what makes change stick.</div>
+          <div class="pillar-copy">
+            Habits, movement, recovery, decision-making and what makes change stick.
+          </div>
         </div>
+
         <div class="pillar">
           <div class="num">04 — LIFE</div>
           <div class="pillar-title">The context matters</div>
-          <div class="pillar-copy">Work, relationships, identity, social connection and the life you're living.</div>
+          <div class="pillar-copy">
+            Work, relationships, identity, social connection and the life you're living.
+          </div>
         </div>
+
+      </section>
+
+      <section class="explainer-section" aria-label="What Midlife Body Science explores">
+
+        <div class="explainer-kicker">
+          A whole-person lens
+        </div>
+
+        <div class="explainer-copy">
+          <p>
+            <strong>Midlife Body Science</strong> explores evidence-based women's health through a whole-person lens — connecting hormones, brain and nervous system, pelvic health, sleep, strength, pain, psychology, behavior, relationships and healthy aging.
+          </p>
+
+          <p>
+            We are interested in what changes in midlife, what actually helps, what is still poorly understood — and how the pieces connect.
+          </p>
+        </div>
+
       </section>
 
       <section class="cta-section" id="survey">
+
         <div>
-          <div class="eyebrow">We're starting by listening</div>
-          <h2>Women first.<br>Assumptions second.</h2>
+          <div class="eyebrow">
+            We're starting by listening
+          </div>
+
+          <h2>
+            Women first.<br>
+            Assumptions second.
+          </h2>
         </div>
 
         <div class="cta-copy">
+
           <p>
             We're exploring what women actually want from their health and wellbeing in midlife — what's working, what isn't, what you're already spending time and money on, and what you wish existed.
           </p>
@@ -435,20 +645,34 @@
             Tell us what you think →
           </a>
 
-          <div class="fine-print">About 5 minutes. No sales pitch.</div>
+          <div class="fine-print">
+            Help shape what we build. No sales pitch.
+          </div>
+
         </div>
+
       </section>
 
       <footer class="coming">
+
         <div>
-          <strong>Midlife Body Science is coming soon.</strong>
+          <strong>
+            Midlife Body Science is coming soon.
+          </strong>
+
           <small>
             Evidence-based whole-person women's health for the second half — without reducing women to one symptom, one hormone, or one body part.
           </small>
         </div>
-        <div class="status">Early development · 2026</div>
+
+        <div class="status">
+          Early development · 2026
+        </div>
+
       </footer>
+
     </div>
   </main>
+
 </body>
 </html>
